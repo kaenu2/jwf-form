@@ -1,8 +1,11 @@
+import { useActiions } from '../../hooks';
+
 import { Button, Checkbox, Form, Input } from 'antd';
 
 export const AuthorizationPage = () => {
+	const { fetchUser } = useActiions();
 	const onFinish = (values: any) => {
-		console.log('Success:', values);
+		fetchUser(values);
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
