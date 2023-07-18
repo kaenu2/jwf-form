@@ -1,7 +1,7 @@
 export interface IUserState {
 	isLoading: boolean;
 	isError: boolean;
-	user: {} | IUser;
+	user: IUser | null;
 	token: string;
 }
 

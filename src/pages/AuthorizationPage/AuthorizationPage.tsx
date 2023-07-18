@@ -46,7 +46,11 @@ export const AuthorizationPage = () => {
 						Submit
 					</Button>
 				</Form.Item>
-				{isError ? <p className='error-message'>Error</p> : ''}
+				{isError ? (
+					<p className='error-message'>Такого пользователя не существует</p>
+				) : (
+					''
+				)}
 			</Form>
 		</main>
 	);

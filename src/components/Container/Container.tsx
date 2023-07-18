@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface IContainer {
 	children: JSX.Element | JSX.Element[];
 }

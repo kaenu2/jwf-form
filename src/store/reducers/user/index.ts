@@ -7,7 +7,7 @@ import {
 const initialState: IUserState = {
 	isError: false,
 	isLoading: false,
-	user: {},
+	user: null,
 	token: ''
 };
 
@@ -17,7 +17,7 @@ export const userReducer = (
 ): IUserState => {
 	switch (action.type) {
 		case EUserActionsTypes.FETCH_USER:
-			return { ...state, isLoading: true, isError: false, user: [] };
+			return { ...state, isLoading: true, isError: false, user: null };
 		case EUserActionsTypes.FETCH_USER_SUCCESS:
 			return {
 				...state,
@@ -27,9 +27,9 @@ export const userReducer = (
 				token: action.payload.token
 			};
 		case EUserActionsTypes.FETCH_USER_ERROR:
-			return { ...state, isLoading: false, isError: true, user: {} };
+			return { ...state, isLoading: false, isError: true, user: null };
 		case EUserActionsTypes.LOGOUT_USER:
-			return { ...state, user: {}, token: '' };
+			return { ...state, user: null, token: '' };
 		default:
 			return state;
 	}

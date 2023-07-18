@@ -10,19 +10,6 @@ export const App = () => {
 		<div>
 			<main>
 				<Container>
-					{/* <Routes>
-						{token ? (
-							<Route
-								path='/'
-								element={<ProfilePage />}
-							/>
-						) : (
-							<Route
-								path='/'
-								element={<AuthorizationPage />}
-							/>
-						)}
-					</Routes> */}
 					<Header />
 					<Routes>
 						<Route

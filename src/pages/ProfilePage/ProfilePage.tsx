@@ -10,6 +10,11 @@ export const ProfilePage = () => {
 	const onLogout = () => {
 		onLogoutUser();
 	};
+	if (!user) {
+		return <h1>Загрузка...</h1>;
+	}
+	const { image, username, email, gender } = user;
+
 	return (
 		<main className='profile _anim'>
 			<Container>
@@ -21,14 +26,14 @@ export const ProfilePage = () => {
 					<div className='profile__info'>
 						<div className='profile__img'>
 							<img
-								src={user.image}
-								alt={user.username + ' photo'}
+								src={image}
+								alt={username + ' photo'}
 							/>
 						</div>
 						<div>
-							<p>name: {user.username}</p>
-							<p>email: {user.email}</p>
-							<p>gender: {user.gender}</p>
+							<p>name: {username}</p>
+							<p>email: {email}</p>
+							<p>gender: {gender}</p>
 						</div>
 					</div>
 				</div>

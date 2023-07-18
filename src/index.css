@@ -7,11 +7,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
-}
-
 .container {
 	max-width: 1300px;
 	margin: 0 auto;
@@ -28,6 +23,8 @@ code {
 .error-message {
 	font-size: 20px;
 	color: red;
+	text-align: center;
+	margin: 0 auto;
 }
 
 @keyframes animPage {
