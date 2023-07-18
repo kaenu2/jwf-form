@@ -7,7 +7,8 @@ import {
 const initialState: IUserState = {
 	isError: false,
 	isLoading: false,
-	user: []
+	user: {},
+	token: ''
 };
 
 export const userReducer = (
@@ -22,10 +23,13 @@ export const userReducer = (
 				...state,
 				isLoading: false,
 				isError: false,
-				user: action.payload
+				user: action.payload,
+				token: action.payload.token
 			};
 		case EUserActionsTypes.FETCH_USER_ERROR:
-			return { ...state, isLoading: false, isError: true, user: [] };
+			return { ...state, isLoading: false, isError: true, user: {} };
+		case EUserActionsTypes.LOGOUT_USER:
+			return { ...state, user: {}, token: '' };
 		default:
 			return state;
 	}

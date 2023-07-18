@@ -1,0 +1,40 @@
+.header {
+	width: 100%;
+	margin-bottom: 30px;
+}
+.header__content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.header__title {
+	font-size: 22px;
+}
+.header__menu {
+}
+.header__list {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+.header__list > li {
+	list-style: none;
+}
+.header__list a {
+	color: #000;
+	font-size: 18px;
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+}
+
+.header__list a:hover {
+	text-decoration: underline;
+	text-underline-offset: 5px;
+	filter: brightness(0.3);
+	color: blue;
+}
+.header__list a._active {
+	text-decoration: underline;
+	text-underline-offset: 5px;
+	color: blue;
+}

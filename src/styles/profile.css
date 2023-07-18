@@ -1,0 +1,35 @@
+.profile {
+}
+.profile__content {
+	display: flex;
+	gap: 20px;
+}
+.profile__left {
+	border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+.profile__info {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+.profile__img img {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.profile h2 {
+	font-size: 18px;
+	font-weight: 400;
+	padding-right: 30px;
+}
+.profile button {
+	font-size: 18px;
+	font-weight: 400;
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+/* kminchelle
+0lelplR */

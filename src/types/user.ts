@@ -1,7 +1,8 @@
 export interface IUserState {
 	isLoading: boolean;
 	isError: boolean;
-	user: [] | IUser[];
+	user: {} | IUser;
+	token: string;
 }
 
 export interface IUser {
@@ -18,7 +19,8 @@ export interface IUser {
 export enum EUserActionsTypes {
 	FETCH_USER = 'FETCH_USER',
 	FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS',
-	FETCH_USER_ERROR = 'FETCH_USER_ERROR'
+	FETCH_USER_ERROR = 'FETCH_USER_ERROR',
+	LOGOUT_USER = 'LOGOUT_USER'
 }
 
 interface IFetchUserAction {
@@ -26,13 +28,17 @@ interface IFetchUserAction {
 }
 interface IFetchUserActionSuccess {
 	type: EUserActionsTypes.FETCH_USER_SUCCESS;
-	payload: IUser[];
+	payload: IUser;
 }
 interface IFetchUserActionError {
 	type: EUserActionsTypes.FETCH_USER_ERROR;
+}
+interface ILogout {
+	type: EUserActionsTypes.LOGOUT_USER;
 }
 
 export type TUserAction =
 	| IFetchUserAction
 	| IFetchUserActionSuccess
-	| IFetchUserActionError;
+	| IFetchUserActionError
+	| ILogout;

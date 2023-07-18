@@ -1,9 +1,10 @@
-import { useActiions } from '../../hooks';
+import { useActiions, useTypedSelector } from '../../hooks';
 
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 
 export const AuthorizationPage = () => {
 	const { fetchUser } = useActiions();
+	const { isError } = useTypedSelector(state => state.user);
 	const onFinish = (values: any) => {
 		fetchUser(values);
 	};
@@ -12,12 +13,11 @@ export const AuthorizationPage = () => {
 		console.log('Failed:', errorInfo);
 	};
 	return (
-		<div>
+		<main className='_anim'>
 			<Form
 				name='basic'
 				labelCol={{ span: 8 }}
 				wrapperCol={{ span: 16 }}
-				initialValues={{ remember: true }}
 				onFinish={onFinish}
 				onFinishFailed={onFinishFailed}
 				autoComplete='off'
@@ -38,14 +38,6 @@ export const AuthorizationPage = () => {
 					<Input.Password />
 				</Form.Item>
 
-				<Form.Item
-					name='remember'
-					valuePropName='checked'
-					wrapperCol={{ offset: 8, span: 16 }}
-				>
-					<Checkbox>Remember me</Checkbox>
-				</Form.Item>
-
 				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 					<Button
 						type='primary'
@@ -54,7 +46,8 @@ export const AuthorizationPage = () => {
 						Submit
 					</Button>
 				</Form.Item>
+				{isError ? <p className='error-message'>Error</p> : ''}
 			</Form>
-		</div>
+		</main>
 	);
 };

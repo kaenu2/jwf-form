@@ -11,20 +11,32 @@ export const fetchUser = (data: any) => {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					username,
-					password
+					username: username,
+					password: password
 				})
 			})
 				.then(res => res.json())
-				.then(data =>
-					dispatch({
-						type: EUserActionsTypes.FETCH_USER_SUCCESS,
-						payload: data
-					})
-				)
-				.catch(e => dispatch({ type: EUserActionsTypes.FETCH_USER_ERROR }));
+				.then(data => {
+					if (data.message) {
+						dispatch({ type: EUserActionsTypes.FETCH_USER_ERROR });
+					} else {
+						dispatch({
+							type: EUserActionsTypes.FETCH_USER_SUCCESS,
+							payload: data
+						});
+					}
+				})
+				.catch(e => {
+					dispatch({ type: EUserActionsTypes.FETCH_USER_ERROR });
+				});
 		} catch (error) {
 			dispatch({ type: EUserActionsTypes.FETCH_USER_ERROR });
 		}
+	};
+};
+
+export const onLogoutUser = () => {
+	return (dispatch: Dispatch<TUserAction>) => {
+		dispatch({ type: EUserActionsTypes.LOGOUT_USER });
 	};
 };

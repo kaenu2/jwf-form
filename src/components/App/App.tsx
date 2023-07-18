@@ -1,16 +1,41 @@
-import { AuthorizationPage } from '../../pages';
-import { Container } from '../';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useTypedSelector } from '../../hooks';
+
+import { AuthorizationPage, ProfilePage } from '../../pages';
+import { Container, Header } from '../';
 
 export const App = () => {
-	fetch('https://dummyjson.com/users/15')
-		.then(res => res.json())
-		.then(console.log);
+	const { token } = useTypedSelector(state => state.user);
 	return (
 		<div>
 			<main>
 				<Container>
-					<h1>App</h1>
-					<AuthorizationPage />
+					{/* <Routes>
+						{token ? (
+							<Route
+								path='/'
+								element={<ProfilePage />}
+							/>
+						) : (
+							<Route
+								path='/'
+								element={<AuthorizationPage />}
+							/>
+						)}
+					</Routes> */}
+					<Header />
+					<Routes>
+						<Route
+							path='/profile'
+							element={token ? <ProfilePage /> : <Navigate to='/' />}
+						/>
+						<Route
+							path='/'
+							element={
+								token ? <Navigate to='/profile' /> : <AuthorizationPage />
+							}
+						/>
+					</Routes>
 				</Container>
 			</main>
 		</div>
